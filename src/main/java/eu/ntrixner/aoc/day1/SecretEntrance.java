@@ -1,5 +1,6 @@
-package eu.ntrixner.aoc;
+package eu.ntrixner.aoc.day1;
 
+import eu.ntrixner.aoc.ChallengeRunner;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -8,7 +9,7 @@ import java.util.List;
 
 @Slf4j
 @Data
-public class SecretEntrance2 implements ChallengeRunner<String>{
+public class SecretEntrance implements ChallengeRunner<String> {
     public String input;
 
     @Override
@@ -33,10 +34,11 @@ public class SecretEntrance2 implements ChallengeRunner<String>{
                 if(value == -1) {
                     value = 99;
                 }
-                if(value == 0) {
-                    count++;
-                }
                 amount--;
+            }
+
+            if(value == 0) {
+                count++;
             }
         }
         log.info("Passed 0 {} times", count);

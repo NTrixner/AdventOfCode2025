@@ -1,6 +1,12 @@
 package eu.ntrixner.aoc;
 
 
+import eu.ntrixner.aoc.day1.SecretEntrance;
+import eu.ntrixner.aoc.day1.SecretEntrance2;
+import eu.ntrixner.aoc.day2.GiftShop;
+import eu.ntrixner.aoc.day2.GiftShop2;
+import eu.ntrixner.aoc.day3.Lobby;
+import eu.ntrixner.aoc.day3.Lobby2;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
@@ -16,9 +22,12 @@ public class Main {
         put("SecretEntrance2", new SecretEntrance2());
         put("GiftShop", new GiftShop());
         put("GiftShop2", new GiftShop2());
+        put("Lobby", new Lobby());
+        put("Lobby2", new Lobby2());
     }};
 
     static void main(String[] args) {
+        long currentTime = System.currentTimeMillis();
         try {
             if (args != null && args.length > 0) {
                 String action = args[0];
@@ -30,5 +39,6 @@ public class Main {
         } catch (IOException e) {
             log.error("Error reading input file", e);
         }
+        log.info("run took {}ms", System.currentTimeMillis() - currentTime);
     }
 }

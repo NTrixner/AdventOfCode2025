@@ -1,15 +1,13 @@
-package eu.ntrixner.aoc;
+package eu.ntrixner.aoc.day2;
 
+import eu.ntrixner.aoc.ChallengeRunner;
 import lombok.extern.slf4j.Slf4j;
 
-import java.sql.Array;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
-import java.util.function.Function;
 
 @Slf4j
-public class GiftShop implements ChallengeRunner<String> {
+public class GiftShop2 implements ChallengeRunner<String> {
     String input;
     List<Long> invalidIds = new ArrayList<>();
 
@@ -48,14 +46,35 @@ public class GiftShop implements ChallengeRunner<String> {
     }
 
     private boolean checkIdInvalid(String val) {
-        for (int i = 1; i <= val.length() - 1; i++) {
-            String partial = val.substring(0, i);
-            String rest = val.substring(i);
-            if (Objects.equals(partial, rest)) {
+        //use i as the amount of repetitions
+        for (int i = 2; i <= val.length(); i++) {
+            if(val.length() % i != 0)
+                continue;
+            String[] partials = splitToChunks(val, i);
+            if(allChunksSame(partials))
                 return true;
-            }
         }
         return false;
 
+    }
+
+    private boolean allChunksSame(String[] partials) {
+        for(int i = 0; i < partials.length - 1; i++){
+            if(!partials[i].equals(partials[i+1]))
+                return false;
+        }
+        return true;
+    }
+
+    private String[] splitToChunks(String val, int numChunks) {
+        int chunkSize = val.length() / numChunks;
+        String[] chunks = new String[numChunks];
+
+        for(int i = 0; i < numChunks; i++) {
+            int start = i * chunkSize;
+            int end = (i + 1) * chunkSize;
+            chunks[i] = val.substring(start, end);
+        }
+        return chunks;
     }
 }
