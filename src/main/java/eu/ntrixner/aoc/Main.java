@@ -7,6 +7,8 @@ import eu.ntrixner.aoc.day2.GiftShop;
 import eu.ntrixner.aoc.day2.GiftShop2;
 import eu.ntrixner.aoc.day3.Lobby;
 import eu.ntrixner.aoc.day3.Lobby2;
+import eu.ntrixner.aoc.day4.PrintingDepartment;
+import eu.ntrixner.aoc.day4.PrintingDepartment2;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
@@ -24,6 +26,8 @@ public class Main {
         put("GiftShop2", new GiftShop2());
         put("Lobby", new Lobby());
         put("Lobby2", new Lobby2());
+        put("PrintingDepartment", new PrintingDepartment());
+        put("PrintingDepartment2", new PrintingDepartment2());
     }};
 
     static void main(String[] args) {

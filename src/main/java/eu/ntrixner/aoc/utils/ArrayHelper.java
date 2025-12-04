@@ -1,0 +1,81 @@
+package eu.ntrixner.aoc.utils;
+
+public final class ArrayHelper {
+
+    public static char[][] toMatrix(String input) {
+        String[] lines = input.split("\n");
+        char[][] matrix = new char[lines.length][];
+        for (int i = 0; i < lines.length; i++) {
+            matrix[i] = lines[i].trim().toCharArray();
+        }
+        return matrix;
+    }
+
+
+    private ArrayHelper() {
+    }
+
+    //Finds the 8 neighbours surrounding the position
+    //0 is the top, then it goes clockwise
+    public static char[] find8Neighbours(char[][] matrix, int i, int j) {
+        char[] neighbours = new char[8];
+
+        //0 - top
+        if (i == 0) {
+            neighbours[0] = ' ';
+        } else {
+            neighbours[0] = matrix[i - 1][j];
+        }
+
+        //1 - top right
+        if (i == 0 || j == matrix[i].length - 1) {
+            neighbours[1] = ' ';
+        } else {
+            neighbours[1] = matrix[i - 1][j + 1];
+        }
+
+        //2 - right
+        if (j == matrix[i].length - 1) {
+            neighbours[2] = ' ';
+        } else {
+            neighbours[2] = matrix[i][j + 1];
+        }
+
+        //3 - bottom right
+        if (j == matrix[i].length - 1 || i == matrix.length - 1) {
+            neighbours[3] = ' ';
+        } else {
+            neighbours[3] = matrix[i + 1][j + 1];
+        }
+
+        //4 - bottom
+        if(i == matrix.length - 1){
+            neighbours[4] = ' ';
+        } else {
+            neighbours[4] = matrix[i + 1][j];
+        }
+
+        //5- bottom left
+        if(j == 0 || i == matrix.length - 1){
+            neighbours[5] = ' ';
+        } else {
+            neighbours[5] = matrix[i + 1][j - 1];
+        }
+
+        //6 - left
+        if(j == 0) {
+            neighbours[6] = ' ';
+        } else {
+            neighbours[6] = matrix[i][j - 1];
+        }
+
+        //7 - top left
+        if(i == 0 || j == 0) {
+            neighbours[7] = ' ';
+        } else {
+            neighbours[7] = matrix[i - 1][j - 1];
+        }
+
+        return neighbours;
+    }
+}
