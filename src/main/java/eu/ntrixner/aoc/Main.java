@@ -14,6 +14,8 @@ public class Main {
     private static final Map<String, ChallengeRunner<String>> ACTIONS = new HashMap<>() {{
         put("SecretEntrance", new SecretEntrance());
         put("SecretEntrance2", new SecretEntrance2());
+        put("GiftShop", new GiftShop());
+        put("GiftShop2", new GiftShop2());
     }};
 
     static void main(String[] args) {
