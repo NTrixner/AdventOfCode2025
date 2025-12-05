@@ -9,6 +9,8 @@ import eu.ntrixner.aoc.day3.Lobby;
 import eu.ntrixner.aoc.day3.Lobby2;
 import eu.ntrixner.aoc.day4.PrintingDepartment;
 import eu.ntrixner.aoc.day4.PrintingDepartment2;
+import eu.ntrixner.aoc.day5.Cafeteria;
+import eu.ntrixner.aoc.day5.Cafeteria2;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
@@ -28,6 +30,8 @@ public class Main {
         put("Lobby2", new Lobby2());
         put("PrintingDepartment", new PrintingDepartment());
         put("PrintingDepartment2", new PrintingDepartment2());
+        put("Cafeteria", new Cafeteria());
+        put("Cafeteria2", new Cafeteria2());
     }};
 
     static void main(String[] args) {
