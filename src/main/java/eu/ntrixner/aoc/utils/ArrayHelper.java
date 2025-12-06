@@ -78,4 +78,19 @@ public final class ArrayHelper {
 
         return neighbours;
     }
+
+    public enum Direction {
+        CCW, CW
+    }
+    public static char[][] rotate(char[][] input, Direction direction, int rotations) {
+        char[][] output = input;
+        for (int r = rotations; r > 0; r--) {
+            output = new char[output[0].length][output.length];
+            for(int x = 0; x < output.length; x++){
+                for(int y = 0; y < output[x].length; y++){
+
+                }
+            }
+        }
+    }
 }
