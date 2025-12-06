@@ -1,12 +1,15 @@
 package eu.ntrixner.aoc.utils;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public final class ArrayHelper {
 
     public static char[][] toMatrix(String input) {
         String[] lines = input.split("\n");
         char[][] matrix = new char[lines.length][];
         for (int i = 0; i < lines.length; i++) {
-            matrix[i] = lines[i].trim().toCharArray();
+            matrix[i] = lines[i].toCharArray();
         }
         return matrix;
     }
@@ -79,18 +82,35 @@ public final class ArrayHelper {
         return neighbours;
     }
 
+    public static List<String> toLines(char[][] rotated) {
+        List<String> lines = new ArrayList<>();
+        for(char[] row : rotated) {
+            lines.add(String.valueOf(row));
+        }
+        return lines;
+    }
+
     public enum Direction {
         CCW, CW
     }
     public static char[][] rotate(char[][] input, Direction direction, int rotations) {
         char[][] output = input;
         for (int r = rotations; r > 0; r--) {
-            output = new char[output[0].length][output.length];
-            for(int x = 0; x < output.length; x++){
-                for(int y = 0; y < output[x].length; y++){
-
+            char[][] outputNew = new char[output[0].length][output.length];
+            for(int y = 0; y < output.length; y++){
+                for(int x = 0; x < output[y].length; x++){
+                    switch (direction) {
+                        case CW:
+                            outputNew[x][y] = output[output.length - 1 - y][x];
+                            break;
+                        case CCW:
+                            outputNew[x][y] = output[y][output[y].length - 1 - x];
+                            break;
+                    }
                 }
             }
+            output = outputNew;
         }
+        return output;
     }
 }
