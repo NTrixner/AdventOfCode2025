@@ -13,6 +13,8 @@ import eu.ntrixner.aoc.day5.Cafeteria;
 import eu.ntrixner.aoc.day5.Cafeteria2;
 import eu.ntrixner.aoc.day6.TrashCompactor;
 import eu.ntrixner.aoc.day6.TrashCompactor2;
+import eu.ntrixner.aoc.day7.Laboratories;
+import eu.ntrixner.aoc.day7.Laboratories2;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
@@ -36,6 +38,8 @@ public class Main {
         put("Cafeteria2", new Cafeteria2());
         put("TrashCompactor", new TrashCompactor());
         put("TrashCompactor2", new TrashCompactor2());
+        put("Laboratories", new Laboratories());
+        put("Laboratories2", new Laboratories2());
     }};
 
     static void main(String[] args) {
