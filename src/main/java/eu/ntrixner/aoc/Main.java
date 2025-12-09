@@ -17,6 +17,8 @@ import eu.ntrixner.aoc.day7.Laboratories;
 import eu.ntrixner.aoc.day7.Laboratories2;
 import eu.ntrixner.aoc.day8.Playground;
 import eu.ntrixner.aoc.day8.Playground2;
+import eu.ntrixner.aoc.day9.MovieTheater;
+import eu.ntrixner.aoc.day9.MovieTheater2;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
@@ -44,6 +46,8 @@ public class Main {
         put("Laboratories2", new Laboratories2());
         put("Playground", new Playground());
         put("Playground2", new Playground2());
+        put("MovieTheater", new MovieTheater());
+        put("MovieTheater2", new MovieTheater2());
     }};
 
     static void main(String[] args) {
