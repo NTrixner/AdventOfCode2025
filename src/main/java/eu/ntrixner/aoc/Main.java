@@ -3,6 +3,8 @@ package eu.ntrixner.aoc;
 
 import eu.ntrixner.aoc.day1.SecretEntrance;
 import eu.ntrixner.aoc.day1.SecretEntrance2;
+import eu.ntrixner.aoc.day10.Factory;
+import eu.ntrixner.aoc.day10.Factory2;
 import eu.ntrixner.aoc.day2.GiftShop;
 import eu.ntrixner.aoc.day2.GiftShop2;
 import eu.ntrixner.aoc.day3.Lobby;
@@ -48,6 +50,8 @@ public class Main {
         put("Playground2", new Playground2());
         put("MovieTheater", new MovieTheater());
         put("MovieTheater2", new MovieTheater2());
+        put("Factory", new Factory());
+        put("Factory2", new Factory2());
     }};
 
     static void main(String[] args) {
