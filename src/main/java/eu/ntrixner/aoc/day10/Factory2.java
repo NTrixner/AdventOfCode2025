@@ -99,8 +99,6 @@ public class Factory2 implements ChallengeRunner<String> {
             int numOfButtons = buttons.length;
             int numCircuits =  joltages.length;
 
-            int sumTargets = 0;
-
             //Upper bound - total of all joltages
             int maxPressesPerButton = Arrays.stream(joltages).sum();
 
