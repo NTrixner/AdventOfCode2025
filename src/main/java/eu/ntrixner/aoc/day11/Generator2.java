@@ -8,24 +8,15 @@ import org.apache.commons.lang3.StringUtils;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Deque;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.IdentityHashMap;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
-import java.util.Queue;
-import java.util.Set;
-import java.util.Stack;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @Slf4j
 public class Generator2 implements ChallengeRunner<String> {
     private String input;
+
     @Override
     public void init(String params) {
         this.input = params;
@@ -33,18 +24,18 @@ public class Generator2 implements ChallengeRunner<String> {
 
     @Override
     public void run() {
-        String[] lines =  input.split("\n");
+        String[] lines = input.split("\n");
         List<Device> devices = new ArrayList<>();
-        for(String line : lines) {
+        for (String line : lines) {
             String deviceName = line.substring(0, line.indexOf(":"));
             String[] connections = line.substring(line.indexOf(":") + 1).split(" ");
             List<String> conStrings = Stream.of(connections).map(String::trim).filter(c -> !StringUtils.isAllBlank(c)).toList();
 
-            devices.add(new Device(deviceName,  new ArrayList<>(), conStrings, 0, false, false, false));
+            devices.add(new Device(deviceName, new ArrayList<>(), conStrings, 0, false, false, false));
         }
 
         //Since there is no actual "out" device, we need to create it manually
-        Device out = new Device("out", new ArrayList<>(), new ArrayList<>(),  0,false, false, false);
+        Device out = new Device("out", new ArrayList<>(), new ArrayList<>(), 0, false, false, false);
 
         devices.add(out);
 
@@ -52,7 +43,7 @@ public class Generator2 implements ChallengeRunner<String> {
         Device fft = devices.stream().filter(d -> "fft".equals(d.name)).findFirst().orElseThrow();
         Device dac = devices.stream().filter(d -> "dac".equals(d.name)).findFirst().orElseThrow();
 
-        for(int i = 0; i < devices.size(); i++) {
+        for (int i = 0; i < devices.size(); i++) {
             Device device = devices.get(i);
             device.setId(i);
             List<Device> collect = devices.stream().filter(d -> device.connectionNames.contains(d.name)).toList();
@@ -62,7 +53,7 @@ public class Generator2 implements ChallengeRunner<String> {
         boolean[] canVisitFft = new boolean[devices.size()];
         boolean[] canVisitOut = new boolean[devices.size()];
         boolean[] canVisitDac = new boolean[devices.size()];
-        for(int i = 0; i < devices.size(); i++) {
+        for (int i = 0; i < devices.size(); i++) {
             Device device = devices.get(i);
             device.canVisitDac = canReach(device, dac.id, devices.size());
             device.canVisitFft = canReach(device, fft.id, devices.size());
@@ -73,10 +64,8 @@ public class Generator2 implements ChallengeRunner<String> {
             canVisitOut[i] = device.canVisitOut;
 
         }
-        //long count = exhaustiveDfsFast(start, "out", devices.size());
 
         long count2 = countPathsDag(devices, start.id, out.id, canVisitOut, canVisitDac, canVisitFft);
-        //List<List<Device>> paths = dfs(start, new ArrayList<>(), "out", false, false).stream().filter(l -> !l.isEmpty()).toList();
 
         log.info("There are {} paths", count2);
 
@@ -199,7 +188,8 @@ public class Generator2 implements ChallengeRunner<String> {
         boolean canVisitDac = false;
         boolean canVisitFft = false;
         boolean canVisitOut = false;
-        public String toString(){
+
+        public String toString() {
             return name;
         }
 
@@ -213,20 +203,6 @@ public class Generator2 implements ChallengeRunner<String> {
         @Override
         public int hashCode() {
             return Objects.hashCode(name);
-        }
-    }
-
-    private static final class Frame {
-        final Device device;
-        int nextIndex;
-        final boolean prevFft;
-        final boolean prevDac;
-
-        Frame(Device device, boolean prevFft, boolean prevDac) {
-            this.device = device;
-            this.prevFft = prevFft;
-            this.prevDac = prevDac;
-            this.nextIndex = 0;
         }
     }
 
