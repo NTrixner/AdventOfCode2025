@@ -5,6 +5,8 @@ import eu.ntrixner.aoc.day1.SecretEntrance;
 import eu.ntrixner.aoc.day1.SecretEntrance2;
 import eu.ntrixner.aoc.day10.Factory;
 import eu.ntrixner.aoc.day10.Factory2;
+import eu.ntrixner.aoc.day11.Generator;
+import eu.ntrixner.aoc.day11.Generator2;
 import eu.ntrixner.aoc.day2.GiftShop;
 import eu.ntrixner.aoc.day2.GiftShop2;
 import eu.ntrixner.aoc.day3.Lobby;
@@ -52,6 +54,8 @@ public class Main {
         put("MovieTheater2", new MovieTheater2());
         put("Factory", new Factory());
         put("Factory2", new Factory2());
+        put("Generator", new Generator());
+        put("Generator2", new Generator2());
     }};
 
     static void main(String[] args) {
