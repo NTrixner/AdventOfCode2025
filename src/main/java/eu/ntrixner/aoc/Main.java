@@ -7,6 +7,7 @@ import eu.ntrixner.aoc.day10.Factory;
 import eu.ntrixner.aoc.day10.Factory2;
 import eu.ntrixner.aoc.day11.Generator;
 import eu.ntrixner.aoc.day11.Generator2;
+import eu.ntrixner.aoc.day12.TreeFarm;
 import eu.ntrixner.aoc.day2.GiftShop;
 import eu.ntrixner.aoc.day2.GiftShop2;
 import eu.ntrixner.aoc.day3.Lobby;
@@ -56,6 +57,7 @@ public class Main {
         put("Factory2", new Factory2());
         put("Generator", new Generator());
         put("Generator2", new Generator2());
+        put("TreeFarm", new TreeFarm());
     }};
 
     static void main(String[] args) {
